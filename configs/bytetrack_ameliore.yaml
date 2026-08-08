@@ -1,0 +1,7 @@
+tracker_type: bytetrack
+track_high_thresh: 0.5
+track_low_thresh: 0.1
+new_track_thresh: 0.6
+track_buffer: 75       # OPTION A : Mémoire portée à 75 frames (~2.5s) contre les masquages
+match_thresh: 0.75     # OPTION A : Association assouplie
+fuse_score: True
