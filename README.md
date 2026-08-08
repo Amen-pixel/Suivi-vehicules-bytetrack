@@ -14,9 +14,11 @@ Hybrid-ByteTrack est une extension optimisée de ByteTrack conçue pour mainteni
 
 💡 Notre Apport & Améliorations (Hybrid-ByteTrack)
 Notre solution combine deux mécanismes complémentaires :
+
 Option A — Mémoire Spatiale Étendue (track_buffer: 75) :
 Augmentation du temps de rétention mémoire du filtre de Kalman de 30 frames (~1s) à 75 frames (~2.5s).
 Permet de prédire la trajectoire d'un véhicule même s'il disparaît temporairement sous un masque lourd.
+
 Option B — Ré-identification Visuelle par Signature HSV (src/visual_reid.py) :
 Extraction d'une empreinte chromatique légère (histogramme HSV Teinte/Saturation) à chaque détection.
 Lors de la réapparition d'un véhicule, le système compare sa signature visuelle avec les pistes enregistrées pour confirmer l'attribution de l'ID d'origine.
@@ -24,16 +26,29 @@ Lors de la réapparition d'un véhicule, le système compare sa signature visuel
 📁 Architecture du Dépôt
 
 suivi-vehicules-bytetrack-hybride/
+
 ├── configs/
-│   └── bytetrack_ameliore.yaml   # Configuration avancée (Buffer 75 frames)
+
+│   └── bytetrack_ameliore.yaml   # 
+
+Configuration avancée (Buffer 75 frames)
+
 ├── src/
+
 │   ├── visual_reid.py            # Extraction et comparaison de signatures HSV
+
 │   └── tracker_engine.py         # Moteur de suivi YOLOv8 + Hybrid-ByteTrack
+
 ├── dataset/                      # Dossier contenant les vidéos de test (.mp4)
+
 ├── results/                      # Dossier de sortie (Vidéos annotées + Logs)
+
 ├── eval_metrics.py               # Script d'évaluation (MOTA, IDF1, ID Switches)
+
 ├── main.py                       # Pipeline principal d'exécution
+
 ├── requirements.txt              # Dépendances Python
+
 └── README.md                     # Documentation du projet
 
 🚀 Installation & Utilisation
