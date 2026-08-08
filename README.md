@@ -11,6 +11,7 @@ Tracker
 
 Dans les scénarios de trafic routier dense (comme à Cotonou), les occultations temporaires entre véhicules (motos masquées par des bus, voitures se dépassant) provoquent de fréquents sauts d'identifiants (ID Switches). L'algorithme standard ByteTrack, bien que très performant, repose uniquement sur la proximité spatiale (filtre de Kalman) et perd la trace d'un véhicule dès que l'occultation se prolonge.
 Hybrid-ByteTrack est une extension optimisée de ByteTrack conçue pour maintenir des IDs uniques et stables même après des masquages prolongés.
+
 💡 Notre Apport & Améliorations (Hybrid-ByteTrack)
 Notre solution combine deux mécanismes complémentaires :
 Option A — Mémoire Spatiale Étendue (track_buffer: 75) :
@@ -19,6 +20,7 @@ Permet de prédire la trajectoire d'un véhicule même s'il disparaît temporair
 Option B — Ré-identification Visuelle par Signature HSV (src/visual_reid.py) :
 Extraction d'une empreinte chromatique légère (histogramme HSV Teinte/Saturation) à chaque détection.
 Lors de la réapparition d'un véhicule, le système compare sa signature visuelle avec les pistes enregistrées pour confirmer l'attribution de l'ID d'origine.
+
 📁 Architecture du Dépôt
 
 suivi-vehicules-bytetrack-hybride/
