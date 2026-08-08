@@ -56,6 +56,7 @@ Configuration avancée (Buffer 75 frames)
 Cloner le dépôt et installer les dépendances nécessaires :
 
 git clone https://github.com/Amen-pixel/Suivi-vehicules-bytetrack
+
 cd suivi-vehicules-bytetrack-hybride
 pip install -r requirements.txt
 
