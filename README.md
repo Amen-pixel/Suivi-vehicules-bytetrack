@@ -8,6 +8,7 @@ Tracker
 
 Tracker
 📌 Présentation du Projet
+
 Dans les scénarios de trafic routier dense (comme à Cotonou), les occultations temporaires entre véhicules (motos masquées par des bus, voitures se dépassant) provoquent de fréquents sauts d'identifiants (ID Switches). L'algorithme standard ByteTrack, bien que très performant, repose uniquement sur la proximité spatiale (filtre de Kalman) et perd la trace d'un véhicule dès que l'occultation se prolonge.
 Hybrid-ByteTrack est une extension optimisée de ByteTrack conçue pour maintenir des IDs uniques et stables même après des masquages prolongés.
 💡 Notre Apport & Améliorations (Hybrid-ByteTrack)
@@ -37,7 +38,7 @@ suivi-vehicules-bytetrack-hybride/
 1. Prérequis & Installation
 Cloner le dépôt et installer les dépendances nécessaires :
 
-git clone https://github.com/Amen-pixel/suivi-vehicules-bytetrack-hybride.git
+git clone https://github.com/Amen-pixel/Suivi-vehicules-bytetrack
 cd suivi-vehicules-bytetrack-hybride
 pip install -r requirements.txt
 
