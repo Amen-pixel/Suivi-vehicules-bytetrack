@@ -1,0 +1,5 @@
+# .gitignore
+*.pt
+dataset/
+results/
+YOLO_BENIN/
