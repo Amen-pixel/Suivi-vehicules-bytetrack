@@ -13,7 +13,15 @@ def executer_pipeline():
         print("⚠️ Aucune vidéo trouvée dans le dossier 'dataset/'. Veuillez en ajouter une.")
         return
 
-    tracker = HybridTracker()
+    # Utilisation prioritaire du modèle fine-tuné s'il existe
+    model_path = "experiments/yolov8_benin/weights/best.pt"
+    if not os.path.exists(model_path):
+        print("⚠️ Poids fine-tunés introuvables. Utilisation du modèle 'yolov8n.pt' par défaut.")
+        model_path = "yolov8n.pt"
+    else:
+        print(f"🎯 Chargement du modèle spécialisé : {model_path}")
+
+    tracker = HybridTracker(model_path=model_path)
 
     for vid in videos:
         input_path = os.path.join("dataset", vid)
