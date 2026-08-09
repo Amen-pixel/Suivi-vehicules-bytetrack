@@ -1,6 +1,6 @@
+
 import os
 import sys
-import shutil
 
 # Tentative d'importation de la bibliothèque officielle motmetrics
 try:
@@ -27,32 +27,10 @@ def analyser_fichier_simple(fichier_log):
     return len(tous_les_ids)
 
 
-def sauvegarder_videos_drive(video_b, video_a, dossier_drive="/content/drive/MyDrive/Resultats_Evaluation"):
-    """Copie uniquement les vidéos baseline et hybride vers le dossier Google Drive."""
-    os.makedirs(dossier_drive, exist_ok=True)
-
-    if video_b and os.path.exists(video_b):
-        ext_b = os.path.splitext(video_b)[1]
-        dst_b = os.path.join(dossier_drive, f"video_baseline{ext_b}")
-        shutil.copy(video_b, dst_b)
-        print(f"🎥 Vidéo Baseline sauvegardée dans Drive : {dst_b}")
-    else:
-        print(f"⚠️ Vidéo Baseline non trouvée : {video_b}")
-
-    if video_a and os.path.exists(video_a):
-        ext_a = os.path.splitext(video_a)[1]
-        dst_a = os.path.join(dossier_drive, f"video_hybride{ext_a}")
-        shutil.copy(video_a, dst_a)
-        print(f"🎥 Vidéo Hybride sauvegardée dans Drive  : {dst_a}")
-    else:
-        print(f"⚠️ Vidéo Hybride non trouvée : {video_a}")
-
-
-def comparer_resultats(log_baseline, log_ameliore, gt_path=None, video_baseline=None, video_ameliore=None, dossier_drive="/content/drive/MyDrive/Resultats_Evaluation"):
+def comparer_resultats(log_baseline, log_ameliore, gt_path=None):
     """
     Compare les deux modèles.
     Calcule MOTA, IDF1, IDSW si gt_path existe, sinon compare les IDs uniques.
-    Sauvegarde uniquement les vidéos dans Google Drive à la fin.
     """
     print("\n" + "=" * 60)
     print("📊 RAPPORT D'ÉVALUATION ET DE PERFORMANCE - HYBRID-BYTETRACK")
@@ -113,18 +91,10 @@ def comparer_resultats(log_baseline, log_ameliore, gt_path=None, video_baseline=
 
     print("=" * 60 + "\n")
 
-    # Sauvegarde exclusivement des vidéos dans Google Drive
-    sauvegarder_videos_drive(video_baseline, video_ameliore, dossier_drive)
-
 
 if __name__ == "__main__":
     log_b = sys.argv[1] if len(sys.argv) > 1 else "results/baseline_log.txt"
     log_a = sys.argv[2] if len(sys.argv) > 2 else "results/hybride_log.txt"
-    gt = sys.argv[3] if len(sys.argv) > 3 and sys.argv[3] != "None" else None
+    gt = sys.argv[3] if len(sys.argv) > 3 else None
 
-    # Arguments pour les vidéos et le dossier Drive
-    vid_b = sys.argv[4] if len(sys.argv) > 4 else "results/baseline_video.mp4"
-    vid_a = sys.argv[5] if len(sys.argv) > 5 else "results/hybride_video.mp4"
-    drive_dir = sys.argv[6] if len(sys.argv) > 6 else "/content/drive/MyDrive/Resultats_Evaluation"
-
-    comparer_resultats(log_b, log_a, gt, vid_b, vid_a, drive_dir)
+    comparer_resultats(log_b, log_a, gt)
