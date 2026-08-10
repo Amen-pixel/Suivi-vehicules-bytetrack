@@ -34,25 +34,41 @@ Impact : Lors de la réapparition d'un véhicule, le système compare sa signatu
 📁 Architecture du Dépôt
 Plaintext
 suivi-vehicules-bytetrack-hybride/
+
 ├── configs/
+
 │   └── bytetrack_ameliore.yaml    # Configuration avancée (Buffer 75 frames)
+
 ├── src/
+
 │   ├── visual_reid.py            # Extraction et comparaison de signatures HSV
+
 │   └── tracker_engine.py         # Moteur de suivi YOLOv8 + Hybrid-ByteTrack
+
 ├── weights/
+
 │   └── best_finetuned_yolo.pt    # Poids du modèle YOLOv8 après fine-tuning
+
 ├── dataset/                      # Dossier contenant les vidéos de test (.mp4)
+
 ├── results/                      # Dossier de sortie (Vidéos annotées + Logs)
+
 ├── eval_metrics.py               # Script d'évaluation (MOTA, IDF1, ID Switches)
+
 ├── main.py                       # Pipeline principal d'exécution
+
 ├── requirements.txt              # Dépendances Python
+
 └── README.md                     # Documentation du projet
+
 🚀 Installation & Utilisation
+
 1. Prérequis & Installation
 Bash
 git clone https://github.com/Amen-pixel/Suivi-vehicules-bytetrack
 cd suivi-vehicules-bytetrack-hybride
 pip install -r requirements.txt
+
 2. Exécution du Pipeline
 Placez vos vidéos de test dans le dossier dataset/, puis lancez le traitement comparatif :
 
