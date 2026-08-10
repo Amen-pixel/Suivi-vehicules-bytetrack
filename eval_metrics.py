@@ -1,6 +1,6 @@
-
 import os
 import sys
+import shutil
 
 # Tentative d'importation de la bibliothèque officielle motmetrics
 try:
@@ -27,10 +27,36 @@ def analyser_fichier_simple(fichier_log):
     return len(tous_les_ids)
 
 
-def comparer_resultats(log_baseline, log_ameliore, gt_path=None):
+def sauvegarder_videos_drive(video_baseline, video_ameliore, dossier_drive="/content/drive/MyDrive/Resultats_Evaluation"):
+    """Copie les vidéos générées directement vers Google Drive si elles existent."""
+    if not os.path.exists("/content/drive/MyDrive"):
+        print("⚠️ Google Drive n'est pas monté. Les vidéos restent en local.")
+        return
+
+    os.makedirs(dossier_drive, exist_ok=True)
+
+    if video_baseline and os.path.exists(video_baseline):
+        ext_b = os.path.splitext(video_baseline)[1]
+        dst_b = os.path.join(dossier_drive, f"video_baseline{ext_b}")
+        shutil.copy(video_baseline, dst_b)
+        print(f"🎥 Vidéo Baseline sauvegardée sur Drive : {dst_b}")
+    else:
+        print(f"⚠️ Vidéo Baseline non trouvée à : {video_baseline}")
+
+    if video_ameliore and os.path.exists(video_ameliore):
+        ext_a = os.path.splitext(video_ameliore)[1]
+        dst_a = os.path.join(dossier_drive, f"video_hybride{ext_a}")
+        shutil.copy(video_ameliore, dst_a)
+        print(f"🎥 Vidéo Hybrid-ByteTrack sauvegardée sur Drive : {dst_a}")
+    else:
+        print(f"⚠️ Vidéo Hybride non trouvée à : {video_ameliore}")
+
+
+def comparer_resultats(log_baseline, log_ameliore, gt_path=None, video_baseline=None, video_ameliore=None, dossier_drive="/content/drive/MyDrive/Resultats_Evaluation"):
     """
     Compare les deux modèles.
     Calcule MOTA, IDF1, IDSW si gt_path existe, sinon compare les IDs uniques.
+    Sauvegarde les vidéos résultantes sur Google Drive.
     """
     print("\n" + "=" * 60)
     print("📊 RAPPORT D'ÉVALUATION ET DE PERFORMANCE - HYBRID-BYTETRACK")
@@ -91,10 +117,18 @@ def comparer_resultats(log_baseline, log_ameliore, gt_path=None):
 
     print("=" * 60 + "\n")
 
+    # Enregistrement des vidéos vers Google Drive
+    sauvegarder_videos_drive(video_baseline, video_ameliore, dossier_drive)
+
 
 if __name__ == "__main__":
     log_b = sys.argv[1] if len(sys.argv) > 1 else "results/baseline_log.txt"
     log_a = sys.argv[2] if len(sys.argv) > 2 else "results/hybride_log.txt"
-    gt = sys.argv[3] if len(sys.argv) > 3 else None
+    gt = sys.argv[3] if len(sys.argv) > 3 and sys.argv[3] != "None" else None
 
-    comparer_resultats(log_b, log_a, gt)
+    # Chemins optionnels vers les vidéos générées
+    vid_b = sys.argv[4] if len(sys.argv) > 4 else "results/baseline_out.mp4"
+    vid_a = sys.argv[5] if len(sys.argv) > 5 else "results/hybride_out.mp4"
+    drive_dir = sys.argv[6] if len(sys.argv) > 6 else "/content/drive/MyDrive/Resultats_Evaluation"
+
+    comparer_resultats(log_b, log_a, gt, vid_b, vid_a, drive_dir)
