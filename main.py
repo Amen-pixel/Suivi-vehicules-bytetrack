@@ -41,8 +41,14 @@ def executer_pipeline():
         vid_amel = f"results/{nom_base}_ameliore_out.mp4"
         tracker.traiter_video(input_path, log_amel, vid_amel, est_ameliore=True)
 
-        # 3. Affichage direct des métriques
-        comparer_resultats(log_base, log_amel)
+        # 3. Affichage des métriques et sauvegarde des vidéos sur Drive
+        comparer_resultats(
+            log_base, 
+            log_amel, 
+            gt_path=None, 
+            video_baseline=vid_base, 
+            video_ameliore=vid_amel
+        )
 
 if __name__ == "__main__":
     executer_pipeline()
