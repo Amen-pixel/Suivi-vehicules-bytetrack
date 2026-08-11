@@ -17,7 +17,7 @@ def executer_pipeline():
     model_path = "experiments/yolov8_benin/weights/best.pt"
     if not os.path.exists(model_path):
         print("⚠️ Poids fine-tunés introuvables. Utilisation du modèle 'yolov8n.pt' par défaut.")
-        model_path = "yolov8n.pt"
+        model_path = "yolov8m.pt"
     else:
         print(f"🎯 Chargement du modèle spécialisé : {model_path}")
 
