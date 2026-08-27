@@ -2,14 +2,14 @@
 
 # 📌 Présentation du Projet
 
-## Dans les scénarios de trafic routier dense (comme à Cotonou), les occultations temporaires entre véhicules (motos masquées par des bus, voitures se dépassant) provoquent de fréquents sauts d'identifiants (ID Switches). L'algorithme standard ByteTrack, bien que très performant, repose uniquement sur la proximité spatiale (filtre de Kalman) et perd la trace d'un véhicule dès que l'occultation se prolonge.
+# Dans les scénarios de trafic routier dense (comme à Cotonou), les occultations temporaires entre véhicules (motos masquées par des bus, voitures se dépassant) provoquent de fréquents sauts d'identifiants (ID Switches). L'algorithme standard ByteTrack, bien que très performant, repose uniquement sur la proximité spatiale (filtre de Kalman) et perd la trace d'un véhicule dès que l'occultation se prolonge.
 
-## Hybrid-ByteTrack est une extension optimisée de ByteTrack conçue pour maintenir des IDs uniques et stables même après des masquages prolongés, en s'appuyant sur un modèle de détection spécialisé et des mécanismes de mémoire avancés. 
+# Hybrid-ByteTrack est une extension optimisée de ByteTrack conçue pour maintenir des IDs uniques et stables même après des masquages prolongés, en s'appuyant sur un modèle de détection spécialisé et des mécanismes de mémoire avancés. 
 
 # 💡 Notre Apport & Pipeline d'Amélioration
 Le projet suit une approche en trois étapes pour maximiser la stabilité du suivi :
 
-###1️⃣ Fine-tuning de YOLOv8 (Détection sur Mesure)
+### 1️⃣ Fine-tuning de YOLOv8 (Détection sur Mesure)
 
 Avant toute optimisation du tracker, nous avons réalisé un fine-tuning de YOLOv8 sur un dataset spécifique au trafic local (motos, voitures, bus en environnement urbain dense).
 
