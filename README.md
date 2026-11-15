@@ -1,6 +1,6 @@
 # 🚗 Hybrid-ByteTrack : Suivi Multi-Objets et Réduction des ID Switches
 
-# 📌 Présentation du Projet
+# 📌 Présentation du Projet Hybrid-ByteTrack
 
 ### Dans les scénarios de trafic routier dense (comme à Cotonou), les occultations temporaires entre véhicules (motos masquées par des bus, voitures se dépassant) provoquent de fréquents sauts d'identifiants (ID Switches). L'algorithme standard ByteTrack, bien que très performant, repose uniquement sur la proximité spatiale (filtre de Kalman) et perd la trace d'un véhicule dès que l'occultation se prolonge.
 
@@ -95,7 +95,7 @@ Afficher le rapport comparatif dans la console.
 Bash
 
 python eval_metrics.py results/video1_baseline_log.txt results/video1_ameliore_log.txt dataset/video1/gt/gt.txt
-# 📊 Résultats & Métriques
+# 📊 Résultats & Métriques 
 
 Nous évaluons la performance via trois indicateurs clés :
 
