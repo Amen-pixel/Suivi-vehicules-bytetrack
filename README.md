@@ -1,4 +1,4 @@
-# 🚗 Hybrid-ByteTrack : Suivi Multi-Objets et Réduction des ID Switches
+ # 🚗 Hybrid-ByteTrack : Suivi Multi-Objets et Réduction des ID Switches
 
 # 📌 Présentation du Projet Hybrid-ByteTrack 
 
