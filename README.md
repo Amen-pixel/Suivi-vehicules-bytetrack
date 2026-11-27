@@ -6,7 +6,7 @@
 
 ### Hybrid-ByteTrack est une extension optimisée de ByteTrack conçue pour maintenir des IDs uniques et stables même après des masquages prolongés, en s'appuyant sur un modèle de détection spécialisé et des mécanismes de mémoire avancés. 
  
-# 💡 Notre Apport & Pipeline d'Amélioration
+# 💡 Notre Apport & Pipeline d'Amélioration 
 Le projet suit une approche en trois étapes pour maximiser la stabilité du suivi :
 
 ### 1️⃣ Fine-tuning de YOLOv8 (Détection sur Mesure)
